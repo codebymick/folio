@@ -110,3 +110,5 @@ readme.md
 External Libraries
 img
 css
+*.min.js
+*.min.css
