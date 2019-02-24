@@ -319,7 +319,7 @@ var config = {
       'HTML',
       'CSS',
       'JS',
-      'PHP'
+      'VUE'
     ]
   },
   options: {
