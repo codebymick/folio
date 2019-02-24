@@ -10,11 +10,11 @@
   <title>Mick White | Web Developer</title>
 
   <link
-    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-    rel='stylesheet' type='text/css'>
+      href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+      rel='stylesheet' type='text/css'>
   <link
-    href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
-    rel='stylesheet' type='text/css'>
+      href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+      rel='stylesheet' type='text/css'>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link inline href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
@@ -54,12 +54,21 @@
 </header>
 <section id="skills">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 mx-auto text-center"><p class="mb-5">
-        <div id="timedate"><span> Total code time today: </span> <a id="h">00</a>: <a id="m">00</a>: <a id="s">00</a>
+    <div class="row h-100 align-items-center">
+      <div class="col-lg-6 mx-auto text-center">
+        <h3 class="mb-3">
+        <span id="timedate"><p> Total code time today: </p> <a id="h">00</a>: <a id="m">00</a>: <a id="s">00</a>
+        </span>
+        </h3>
+      </div>
+      <div class="col-lg-6">
+        <div id="canvas-holder mx-auto">
+          <canvas id="chart-area"></canvas>
         </div>
-        </p></div>
+      </div>
     </div>
+
+
     <div class="row skills1">
       <div class="col-lg-3 col-md-6 text-center">
         <div class="service-box mt-5 mx-auto"><i class="fab fa-4x fa-html5 text-primary mb-3 sr-icon-1"></i>
@@ -201,8 +210,11 @@
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
 <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="vendor/chart/chart-bundle.min.js"></script>
+<script src="vendor/chart/utils.min.js"></script>
+
 <!-- inline js/main.min.js -->
-<script src="js/main.min.js" inline></script>
+<script src="js/main.js" inline></script>
 </body>
 
 </html>

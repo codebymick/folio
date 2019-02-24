@@ -138,17 +138,24 @@ function initClock() {
   var H = d.getHours();
   var N = d.getDay();
 
+
+  $.fn.multiline = function(text){
+    this.text(text);
+    this.html(this.html().replace(/\n/g,'<br/>'));
+    return this;
+  }
+
   updateClock();
   if (N !== 0) {
     if (H > 8 && H < 17) {
       window.setInterval("updateClock()", 1)
     } else if (H > 17) {
-      $('#timedate').text('Total code time today: ' + getRandomInt(2, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
+      $('#timedate').multiline('Total code time today: \n' + getRandomInt(2, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
     }  else {
-      $('#timedate').text('Total code time yesterday: ' + getRandomInt(2, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
+      $('#timedate').multiline('Total code time yesterday: \n' + getRandomInt(2, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
     }
   } else {
-    $('#timedate').text('Total code time yesterday: ' + getRandomInt(2, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
+    $('#timedate').multiline('Total code time yesterday: \n \n' + getRandomInt(2, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
   }
 }
 
@@ -224,10 +231,10 @@ const squares          = document.querySelector('.squares');
 var menuMonths         = [];
 var count              = 12;
 
-//position last square of grid on corerct day or week
-var currentMonthAdjust = 366 - lastDayOfMonth + currDate + currDay;
+//position last square of grid on correct day or week
+// var currentMonthAdjust = 364 - lastDayOfMonth + currDate ;
 
-for (var i = 7 - currDay; i < currentMonthAdjust -2; i += 1) {
+for (var i = currDay; i < 365; i += 1) {
   var level = Math.floor(Math.random() * 25);
   if (level === 1) {
     var popupText = 'contribution on '
@@ -245,7 +252,7 @@ for (var i = 7 - currDay; i < currentMonthAdjust -2; i += 1) {
   var contrDate  = flexDate.getDate() + ' ' + monthArray[flexDate.getMonth()] + ', ' + flexDate.getFullYear();
   var shortDate  = flexDate.getDate() + ' ' + monthArray[flexDate.getMonth()];
   var contrDay   = flexDate.getDay();
-  var holidays   = ['21 Dec', '22 Dec', '23 Dec', '24 Dec', '25 Dec', '26 Dec', '27 Dec', '28 Dec', '29 Dec', '30 Dec', '31 Dec', '1 Jan', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul', '9 Jul', '10 Jul', '11 Jul', '12 Jul', '13 Jul', '14 Jul', '3 Oct', '4 Oct', '5 Oct', '6 Oct', '7 Oct', '8 Oct', '9 Oct', '10 Oct', '11 Oct', '12 Oct'];
+  var holidays   = ['21 Dec', '22 Dec', '23 Dec', '24 Dec', '25 Dec', '26 Dec', '27 Dec', '28 Dec', '29 Dec', '30 Dec', '31 Dec', '1 Jan', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul', '9 Jul', '10 Jul', '11 Jul', '12 Jul', '13 Jul', '14 Jul', '15 Jul', '16 Jul', '17 Jul', '18 Jul', '19 Jul', '3 Oct', '4 Oct', '5 Oct', '6 Oct', '7 Oct', '8 Oct', '9 Oct', '10 Oct', '11 Oct', '12 Oct'];
   var textInsert = `<span class="bubble-arrow">` + ` ${level} ` + popupText + contrDate + `</span></li>`;
 
   if (holidays.indexOf(shortDate) > -1 || contrDay === 0) {//sundays and holidays
@@ -284,7 +291,120 @@ if (currDay === 0) {
 }
 $('.tips').hover(function () {
   $(this).toggleClass('show-tips');
-  if (currDay > 200) {
-    console.log('WTF')
-  }
 });
+
+//chart script
+var randomScalingFactor = function() {
+  return Math.round(Math.random() * 100);
+};
+
+var config = {
+  type: 'pie',
+  data: {
+    datasets: [{
+      data: [
+        HTML,
+        CSS,
+        JS,
+        VUE,
+      ],
+      backgroundColor: [
+        window.chartColors.orange,
+        window.chartColors.yellow,
+        window.chartColors.green,
+        window.chartColors.blue,
+      ],
+    }],
+    labels: [
+      'HTML',
+      'CSS',
+      'JS',
+      'PHP'
+    ]
+  },
+  options: {
+    responsive: true,
+    legend: false,
+    labels: true,
+    tooltips: {
+      // Disable the on-canvas tooltip
+      enabled: false,
+      custom: function(tooltipModel) {
+        // Tooltip Element
+        var tooltipEl = document.getElementById('chartjs-tooltip');
+        // Create element on first render
+        if (!tooltipEl) {
+          tooltipEl = document.createElement('div');
+          tooltipEl.id = 'chartjs-tooltip';
+          tooltipEl.innerHTML = "<table></table>";
+          document.body.appendChild(tooltipEl);
+        }
+
+        // Hide if no tooltip
+        if (tooltipModel.opacity === 0) {
+          tooltipEl.style.opacity = 0;
+          return;
+        }
+
+        // Set caret Position
+        tooltipEl.classList.remove('above', 'below', 'no-transform');
+        if (tooltipModel.yAlign) {
+          tooltipEl.classList.add(tooltipModel.yAlign);
+        } else {
+          tooltipEl.classList.add('no-transform');
+        }
+
+        function getBody(bodyItem) {
+          return bodyItem.lines;
+        }
+
+        // Set Text
+        if (tooltipModel.body) {
+          var titleLines = tooltipModel.title || [];
+          var bodyLines = tooltipModel.body.map(getBody);
+
+          var innerHtml = '<thead>';
+
+          titleLines.forEach(function(title) {
+            innerHtml += '<tr><th>' + title +'</th></tr>';
+          });
+          innerHtml += '</thead><tbody>';
+
+          bodyLines.forEach(function(body, i) {
+            var colors = tooltipModel.labelColors[i];
+            var style = 'background:' + colors.backgroundColor;
+            style += '; border-color:' + colors.borderColor;
+            style += '; border-width: 2px';
+            var span = '<span style="' + style + '"></span>';
+            innerHtml += '<tr><td>' + span + body + '%</td></tr>';
+          });
+          innerHtml += '</tbody>';
+
+          var tableRoot = tooltipEl.querySelector('table');
+          tableRoot.innerHTML = innerHtml;
+        }
+
+        // `this` will be the overall tooltip
+        var position = this._chart.canvas.getBoundingClientRect();
+
+        // Display, position, and set styles for font
+        tooltipEl.style.opacity = 1;
+        tooltipEl.style.position = 'absolute';
+        tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+        tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+        tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
+        tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
+        tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
+        tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+        tooltipEl.style.pointerEvents = 'none';
+      }
+    }
+  }
+};
+
+window.onload = function() {
+  var ctx = document.getElementById('chart-area').getContext('2d');
+  window.myPie = new Chart(ctx, config);
+};
+
+
