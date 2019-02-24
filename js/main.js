@@ -133,6 +133,11 @@
   })
 })(jQuery);
 
+$(window).scroll(function () {
+  var user          = 'mickwhite', domain = 'protonmail.com', element = document.getElementById('email');
+  element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>'
+});
+
 function initClock() {
   var d = new Date();
   var H = d.getHours();
@@ -143,7 +148,7 @@ function initClock() {
     this.text(text);
     this.html(this.html().replace(/\n/g,'<br/>'));
     return this;
-  }
+  };
 
   updateClock();
   if (N !== 0) {
@@ -169,11 +174,12 @@ function updateClock() {
   var now   = new Date();
   var sec   = now.getSeconds(), min = now.getMinutes(), currentHour = now.getHours();
   if (currentHour > 8) {
-    currentHour = currentHour - 9;
-    if (min > 25) {
-      min = min - 25
+    currentHour = currentHour - 8;
+    if (min > 0) {
+      min = min - getRandomInt(1,59)
     }
   }
+
   var tags = ["h", "m", "s"], corr = [currentHour.pad(2), min.pad(2), sec.pad(2)];
   for (var i = 0; i < tags.length; i += 1) {
     document.getElementById(tags[i]).firstChild.nodeValue = corr[i]
@@ -181,8 +187,8 @@ function updateClock() {
 }
 
 initClock();
-var maxWidth = $('.skill_bar').width();
 
+var maxWidth = $('.skill_bar').width();
 function getRandomInt(min, maxWidth) {
   return Math.floor(Math.random() * (maxWidth - min + 1) + min)
 }
@@ -196,6 +202,7 @@ var vals     = [];
 for (let key of Object.keys(codeData)) {
   let codeValue                          = codeData[key];
   document.getElementById(key).innerHTML = codeValue + '%';
+
   $(window).scroll(function () {
     function elementScrolled(elem) {
       var docViewTop    = $(window).scrollTop();
@@ -213,10 +220,7 @@ for (let key of Object.keys(codeData)) {
     element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>'
   })
 }
-$(window).scroll(function () {
-  var user          = 'mickwhite', domain = 'protonmail.com', element = document.getElementById('email');
-  element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>'
-});
+
 var d                  = new Date();
 var yestDate           = d.getDate() - 1;
 var yestMonth          = d.getMonth();
@@ -376,7 +380,7 @@ var config = {
             style += '; border-color:' + colors.borderColor;
             style += '; border-width: 2px';
             var span = '<span style="' + style + '"></span>';
-            innerHtml += '<tr><td>' + span + body + '%</td></tr>';
+            innerHtml += '<tr><td>' + span + body + ' minutes</td></tr>';
           });
           innerHtml += '</tbody>';
 
