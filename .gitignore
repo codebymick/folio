@@ -112,3 +112,4 @@ img
 css
 *.min.js
 *.min.css
+.travis.yml
