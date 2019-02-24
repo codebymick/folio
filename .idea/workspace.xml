@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee71742-ff93-4a4f-93fc-715289ca0b1b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.min.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="372">
@@ -78,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="378" column="54" selection-start-line="378" selection-start-column="54" selection-end-line="378" selection-end-column="54" />
+            <state relative-caret-position="200">
+              <caret line="378" column="65" selection-start-line="378" selection-start-column="65" selection-end-line="378" selection-end-column="65" />
               <folding>
                 <element signature="e#14#2194#0" expanded="true" />
                 <element signature="e#957#1122#0" expanded="true" />
@@ -97,8 +99,8 @@
                 <element signature="e#9768#9769#0" expanded="true" />
                 <element signature="e#11318#11319#0" expanded="true" />
                 <element signature="e#11361#11362#0" expanded="true" />
-                <element signature="e#11639#11640#0" expanded="true" />
-                <element signature="e#11710#11711#0" expanded="true" />
+                <element signature="e#11610#11611#0" expanded="true" />
+                <element signature="e#11681#11682#0" expanded="true" />
                 <element signature="e#10410#10522#0" expanded="true" />
               </folding>
             </state>
@@ -194,8 +196,9 @@
         <option value="$PROJECT_DIR$/vendor/chart/utils.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/scss/_custom.scss" />
-        <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/js/main.js" />
       </list>
     </option>
   </component>
@@ -385,18 +388,18 @@
       <workItem from="1550837022393" duration="11410000" />
       <workItem from="1550893657722" duration="2339000" />
       <workItem from="1551034593139" duration="886000" />
-      <workItem from="1551035998107" duration="4336000" />
+      <workItem from="1551035998107" duration="5248000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39043000" />
+    <option name="totallyTimeSpent" value="39955000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4852941" visible="true" weight="0.2956381" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4852941" visible="true" weight="0.2956381" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Gulp" order="2" sideWeight="0.5147059" side_tool="true" weight="0.2819063" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -409,7 +412,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.29131654" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.29131654" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -533,10 +536,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="114" column="11" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="378" column="54" selection-start-line="378" selection-start-column="54" selection-end-line="378" selection-end-column="54" />
+        <state relative-caret-position="200">
+          <caret line="378" column="65" selection-start-line="378" selection-start-column="65" selection-end-line="378" selection-end-column="65" />
           <folding>
             <element signature="e#14#2194#0" expanded="true" />
             <element signature="e#957#1122#0" expanded="true" />
@@ -551,23 +567,10 @@
             <element signature="e#9768#9769#0" expanded="true" />
             <element signature="e#11318#11319#0" expanded="true" />
             <element signature="e#11361#11362#0" expanded="true" />
-            <element signature="e#11639#11640#0" expanded="true" />
-            <element signature="e#11710#11711#0" expanded="true" />
+            <element signature="e#11610#11611#0" expanded="true" />
+            <element signature="e#11681#11682#0" expanded="true" />
             <element signature="e#10410#10522#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="114" column="11" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
         </state>
       </provider>
     </entry>
