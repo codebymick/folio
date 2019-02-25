@@ -417,15 +417,32 @@ ul {
 
 .months {
   grid-area: months;
-  li{
+
+  li {
     text-align: center;
   }
 }
-td{
-  &.JS{
-    border: 10px solid red!important;
-  }
-}
+
+//span {
+//  &.J {
+//    border: 10px solid red !important;
+//    &:before{
+//      content: 'vue';
+//    }
+//  }
+//
+//  &.H {
+//    border: 10px solid blue !important;
+//  }
+//
+//  &.C {
+//    border: 10px solid green !important;
+//  }
+//
+//  &.V {
+//    border: 10px solid orange !important;
+//  }
+//}
 
 .days {
   grid-area: days;
@@ -593,6 +610,7 @@ td{
     }
   }
 }
+
 .contributions {
-    overflow-x: scroll;
+  overflow-x: scroll;
 }

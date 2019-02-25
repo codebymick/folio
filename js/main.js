@@ -175,6 +175,10 @@
       element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>'
     })
   }
+  function addDays(date, daysToAdd) {
+    var _24HoursInMilliseconds = 86400000;
+    return new Date(date.getTime() + daysToAdd * _24HoursInMilliseconds)
+  };
 
   var d              = new Date();
   var yestDate       = d.getDate() - 1;
@@ -204,11 +208,6 @@ if (currHour > 10 ) {// display today's square with contributions only after 10a
       popupText = 'contributions on '
     }
 
-    function addDays(date, daysToAdd) {
-      var _24HoursInMilliseconds = 86400000;
-      return new Date(date.getTime() + daysToAdd * _24HoursInMilliseconds)
-    };
-
     var now        = new Date();
     var flexDate   = addDays(now, i - 365);
     var contrDate  = flexDate.getDate() + ' ' + monthArray[flexDate.getMonth()] + ', ' + flexDate.getFullYear();
@@ -219,8 +218,8 @@ if (currHour > 10 ) {// display today's square with contributions only after 10a
 
     if (holidays.indexOf(shortDate) > -1 || contrDay === 0) {//sundays and holidays
       level = 0;
-      squares.insertAdjacentHTML('beforeend', `<li class="tips"><span class="bubble-arrow">0 ` + popupText + contrDate + `</span></li>`)
-      if (i < 100) {
+      squares.insertAdjacentHTML('beforeend', `<li class="tips"><span class="bubble-arrow">0 ` + popupText + contrDate + `</span></li>`);
+      if (i < 84) {
         $('.tips').addClass('short');
       }
     } else {
@@ -300,6 +299,7 @@ if (currHour > 10 ) {// display today's square with contributions only after 10a
             tooltipEl.id        = 'chartjs-tooltip';
             tooltipEl.innerHTML = "<table></table>";
             document.body.appendChild(tooltipEl);
+            console.log(tooltipEl);
           }
           // Set caret Position
           tooltipEl.classList.remove('above', 'below', 'no-transform');
@@ -325,15 +325,13 @@ if (currHour > 10 ) {// display today's square with contributions only after 10a
             innerHtml += '</thead><tbody>';
 
             bodyLines.forEach(function (body, i) {
-              var title = grep -oP "(?:^|,)$KEY:\K[^,]+";
-
+              const uniqueClass = body.map(([v])=> v);
               var colors = tooltipModel.labelColors[i];
               var style  = 'background-color:' + colors.backgroundColor;
               style += '; border-color:' + colors.borderColor;
               style += '; border-width: 2px';
-              var span   = '<span style="' + style + '"></span>';
-              innerHtml += '<tr><td class="' + title + '">' + span + body + '%</td></tr>';
-              console.log(title);
+              var span   = '<span class="' + uniqueClass + '" style="' + style + '"></span>';
+              innerHtml += '<tr><td>' + span + body + '%</td></tr>';
             });
             innerHtml += '</tbody>';
 

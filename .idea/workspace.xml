@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee71742-ff93-4a4f-93fc-715289ca0b1b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scss/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/scss/_custom.scss" afterDir="false" />
@@ -20,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scss/_custom.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="424" column="3" selection-start-line="424" selection-start-column="3" selection-end-line="424" selection-end-column="3" />
+            <state relative-caret-position="346">
+              <caret line="445" lean-forward="true" selection-start-line="445" selection-end-line="445" />
             </state>
           </provider>
         </entry>
@@ -45,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="328" lean-forward="true" selection-start-line="328" selection-end-line="328" />
+            <state relative-caret-position="334">
+              <caret line="334" selection-start-line="334" selection-end-line="334" />
               <folding>
                 <element signature="e#957#1122#0" expanded="true" />
                 <element signature="e#2223#2417#0" expanded="true" />
@@ -63,7 +61,7 @@
                 <element signature="e#4564#4806#0" expanded="true" />
                 <element signature="e#4887#4888#0" expanded="true" />
                 <element signature="e#4960#4961#0" expanded="true" />
-                <element signature="e#6236#6363#0" expanded="true" />
+                <element signature="e#5229#5356#0" expanded="true" />
                 <element signature="e#8423#8424#0" expanded="true" />
                 <element signature="e#8465#8466#0" expanded="true" />
                 <element signature="e#8525#8526#0" expanded="true" />
@@ -118,8 +116,8 @@
       <find>vue</find>
       <find>%</find>
       <find>skills1</find>
-      <find>minutes</find>
       <find>months</find>
+      <find>minutes</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -140,8 +138,8 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/scss/_custom.scss" />
         <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/scss/_custom.scss" />
       </list>
     </option>
   </component>
@@ -337,12 +335,12 @@
       <workItem from="1550893657722" duration="2339000" />
       <workItem from="1551034593139" duration="886000" />
       <workItem from="1551035998107" duration="6484000" />
-      <workItem from="1551117266186" duration="7166000" />
+      <workItem from="1551117266186" duration="8541000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48357000" />
+    <option name="totallyTimeSpent" value="49732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -379,7 +377,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/main.js</url>
-          <line>366</line>
+          <line>364</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -516,17 +514,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scss/_custom.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="424" column="3" selection-start-line="424" selection-start-column="3" selection-end-line="424" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="328" lean-forward="true" selection-start-line="328" selection-end-line="328" />
+        <state relative-caret-position="334">
+          <caret line="334" selection-start-line="334" selection-end-line="334" />
           <folding>
             <element signature="e#957#1122#0" expanded="true" />
             <element signature="e#2223#2417#0" expanded="true" />
@@ -540,7 +531,7 @@
             <element signature="e#4564#4806#0" expanded="true" />
             <element signature="e#4887#4888#0" expanded="true" />
             <element signature="e#4960#4961#0" expanded="true" />
-            <element signature="e#6236#6363#0" expanded="true" />
+            <element signature="e#5229#5356#0" expanded="true" />
             <element signature="e#8423#8424#0" expanded="true" />
             <element signature="e#8465#8466#0" expanded="true" />
             <element signature="e#8525#8526#0" expanded="true" />
@@ -551,6 +542,13 @@
             <element signature="e#10403#10404#0" expanded="true" />
             <element signature="e#12054#12177#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scss/_custom.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="445" lean-forward="true" selection-start-line="445" selection-end-line="445" />
         </state>
       </provider>
     </entry>
