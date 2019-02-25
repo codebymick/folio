@@ -417,6 +417,14 @@ ul {
 
 .months {
   grid-area: months;
+  li{
+    text-align: center;
+  }
+}
+td{
+  &.JS{
+    border: 10px solid red!important;
+  }
 }
 
 .days {
