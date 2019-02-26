@@ -364,6 +364,19 @@
     var ctx      = document.getElementById('chart-area').getContext('2d');
     window.myPie = new Chart(ctx, config);
   };
+
+  var url = "https://api.nasa.gov/planetary/apod?api_key=AMz8lkRfduSiN1E4csXepee4xIptaPmASqDBFjEh";
+
+
+  $.ajax({
+    url: url,
+    success: function(result){
+      if(result.media_type === "video") {
+        result.url = "https://apod.nasa.gov/apod/image/1902/RedSprites_Broady_960.jpg";
+      }
+      $("header.masthead").css("background-image", 'url(' + result.url + ')');
+    }
+  });
 })(jQuery); // End of use strict
 
 
