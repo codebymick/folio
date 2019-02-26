@@ -110,12 +110,12 @@
       if (H > 8 && H < 17) {
         window.setInterval("updateClock()", 1)
       } else if (H > 17) {
-        $('#timedate').multiline('Total code time today: \n' + getRandomInt(2, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
+        $('#timedate').multiline('Total code time today: \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
       } else {
-        $('#timedate').multiline('Total code time yesterday: \n' + getRandomInt(2, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
+        $('#timedate').multiline('Total code time yesterday: \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
       }
     } else {
-      $('#timedate').multiline('Total code time yesterday: \n \n' + getRandomInt(2, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
+      $('#timedate').multiline('Total code time Friday: \n \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
     }
   }
 
