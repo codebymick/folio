@@ -120,7 +120,9 @@
   }
 
   Number.prototype.pad = function (n) {
-    for (var r = this.toString(); r.length < n; r = 0 + r) {};
+    for (var r = this.toString(); r.length < n; r = 0 + r) {
+    }
+    ;
     return r
   };
 
@@ -175,31 +177,32 @@
       element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>'
     })
   }
+
   function addDays(date, daysToAdd) {
     var _24HoursInMilliseconds = 86400000;
     return new Date(date.getTime() + daysToAdd * _24HoursInMilliseconds)
   };
 
-  var d              = new Date();
-  var yestDate       = d.getDate() - 1;
-  var yestMonth      = d.getMonth();
-  var month          = 0;
-  var currHour = d.getHours();
-  var currMonth      = month - 10;
-  var currDay        = d.getDay();
-  var currDate       = d.getDate();
-  var curr_year      = d.getFullYear();
-  var monthArray     = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const squares      = document.querySelector('.squares');
-  var menuMonths     = [];
-  var count          = 12;
+  var d          = new Date();
+  var yestDate   = d.getDate() - 1;
+  var yestMonth  = d.getMonth();
+  var month      = 0;
+  var currHour   = d.getHours();
+  var currMonth  = month - 10;
+  var currDay    = d.getDay();
+  var currDate   = d.getDate();
+  var curr_year  = d.getFullYear();
+  var monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const squares  = document.querySelector('.squares');
+  var menuMonths = [];
+  var count      = 12;
 
 //position last square of grid on correct day or week
 // var currentMonthAdjust = 364 - lastDayOfMonth + currDate ;
   var display_to_today = 343 + ((Math.floor(currDate / 7) * 7) + currDay);
-if (currHour > 10 ) {// display today's square with contributions only after 10am
-  display_to_today = display_to_today + 1;
-}
+  if (currHour > 10) {// display today's square with contributions only after 10am
+    display_to_today = display_to_today + 1;
+  }
   for (var i = 0; i < display_to_today; i += 1) {
     var level = Math.floor(Math.random() * 25);
     if (level === 1) {
@@ -209,7 +212,7 @@ if (currHour > 10 ) {// display today's square with contributions only after 10a
     }
 
     var now        = new Date();
-    var flexDate   = addDays(now, i - 365);
+    var flexDate   = addDays(now, i - 366);
     var contrDate  = flexDate.getDate() + ' ' + monthArray[flexDate.getMonth()] + ', ' + flexDate.getFullYear();
     var shortDate  = flexDate.getDate() + ' ' + monthArray[flexDate.getMonth()];
     var contrDay   = flexDate.getDay();
@@ -317,7 +320,7 @@ if (currHour > 10 ) {// display today's square with contributions only after 10a
           if (tooltipModel.body) {
             var titleLines = tooltipModel.title || [];
             var bodyLines  = tooltipModel.body.map(getBody);
-            var innerHtml = '<thead>';
+            var innerHtml  = '<thead>';
 
             titleLines.forEach(function (title) {
               innerHtml += '<tr><th>' + title + '</th></tr>';
@@ -325,12 +328,12 @@ if (currHour > 10 ) {// display today's square with contributions only after 10a
             innerHtml += '</thead><tbody>';
 
             bodyLines.forEach(function (body, i) {
-              const uniqueClass = body.map(([v])=> v);
-              var colors = tooltipModel.labelColors[i];
-              var style  = 'background-color:' + colors.backgroundColor;
+              const uniqueClass = body.map(([v]) => v);
+              var colors        = tooltipModel.labelColors[i];
+              var style         = 'background-color:' + colors.backgroundColor;
               style += '; border-color:' + colors.borderColor;
               style += '; border-width: 2px';
-              var span   = '<span class="' + uniqueClass + '" style="' + style + '"></span>';
+              var span          = '<span class="' + uniqueClass + '" style="' + style + '"></span>';
               innerHtml += '<tr><td>' + span + body + '%</td></tr>';
             });
             innerHtml += '</tbody>';
