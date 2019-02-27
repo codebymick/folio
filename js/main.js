@@ -93,290 +93,278 @@
     element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>'
   });
 
-  function initClock() {
-    var d = new Date();
-    var H = d.getHours();
-    var N = d.getDay();
+
+})(jQuery); // End of use strict
 
 
-    $.fn.multiline = function (text) {
-      this.text(text);
-      this.html(this.html().replace(/\n/g, '<br/>'));
-      return this;
-    };
+function initClock() {
+  var d = new Date();
+  var H = d.getHours();
+  var N = d.getDay();
 
-    updateClock();
-    if (N !== 0) {
-      if (H > 8 && H < 17) {
-        window.setInterval("updateClock()", 1)
-      } else if (H > 17) {
+  $.fn.multiline = function (text) {
+    this.text(text);
+    this.html(this.html().replace(/\n/g, '<br/>'));
+    return this;
+  };
+
+  updateClock();
+  if (N !== 0) {
+    if (H > 8 && H < 17) {
+      window.setInterval("updateClock()", 1)
+    } else if (H > 17) {
         $('#timedate').multiline('Total code time today: \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
       } else {
         $('#timedate').multiline('Total code time yesterday: \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
       }
     } else {
       $('#timedate').multiline('Total code time Friday: \n \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
-    }
+  }
+}
+
+Number.prototype.pad = function (n) {
+  for (var r = this.toString();
+       r.length < n; r = 0 + r) {};
+  return r
+};
+
+function updateClock() {
+  var now = new Date();
+  var sec = now.getSeconds(), min = now.getMinutes(), currentHour = now.getHours();
+  if (currentHour > 8) {
+    currentHour = currentHour - 8;
+  }
+  if (min > 11 && min < 59) {
+    min = min - 7
   }
 
-  Number.prototype.pad = function (n) {
-    for (var r = this.toString(); r.length < n; r = 0 + r) {
-    }
-    ;
-    return r
-  };
 
-  function updateClock() {
-    var now = new Date();
-    var sec = now.getSeconds(), minutes = now.getMinutes(), currentHour = now.getHours();
-    if (currentHour > 8) {
-      currentHour = currentHour - 8;
-      if (minutes > 0) {
-        minutes = minutes - getRandomInt(1, 59)
-      }
-    }
-
-    var tags = ["h", "m", "s"], corr = [currentHour.pad(2), minutes.pad(2), sec.pad(2)];
-    for (var i = 0; i < tags.length; i += 1) {
-      document.getElementById(tags[i]).firstChild.nodeValue = corr[i]
-    }
+  var tags = ["h", "m", "s"], corr = [currentHour.pad(2), min.pad(2), sec.pad(2)];
+  for (var i = 0; i < tags.length; i += 1) {
+    document.getElementById(tags[i]).firstChild.nodeValue = corr[i]
   }
+}
 
-  initClock();
+initClock();
 
-  var maxWidth = $('.skill_bar').width();
+// var maxWidth = $('.skill_bar').width();
 
-  function getRandomInt(min, maxWidth) {
-    return Math.floor(Math.random() * (maxWidth - min + 1) + min)
-  }
+function getRandomInt(min, maxWidth) {
+  return Math.floor(Math.random() * (maxWidth - min + 1) + min)
+}
 
-  var HTML     = Math.floor(getRandomInt(20, 15));
-  var CSS      = Math.floor(getRandomInt(20, 60));
-  var JS       = Math.floor(getRandomInt(20, 35));
-  var VUE      = Math.floor(getRandomInt(20, 10));
-  var codeData = {'HTML': HTML, 'CSS': CSS, 'JS': JS, 'VUE': VUE};
-  var vals     = [];
-  for (let key of Object.keys(codeData)) {
-    let codeValue                          = codeData[key];
-    document.getElementById(key).innerHTML = codeValue + '%';
+var HTML     = Math.floor(getRandomInt(20, 25));
+var CSS      = Math.floor(getRandomInt(20, 35));
+var VUE      = Math.floor(getRandomInt(20, 15));
+var JS       = 100 - HTML - CSS - VUE;
+var codeData = {'HTML': HTML, 'CSS': CSS, 'JS': JS, 'VUE': VUE};
+for (let key of Object.keys(codeData)) {
+  let codeValue                          = codeData[key];
+  document.getElementById(key).innerHTML = codeValue + '%';
 
-    $(window).scroll(function () {
-      function elementScrolled(elem) {
-        var docViewTop    = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
-        var elemTop       = $(elem).offset().top;
-        return ((elemTop <= docViewBottom) && (elemTop >= docViewTop))
-      }
+  $(window).scroll(function () {
+    function elementScrolled(elem) {
+      var docViewTop    = $(window).scrollTop();
+      var docViewBottom = docViewTop + $(window).height();
+      var elemTop       = $(elem).offset().top;
+      return ((elemTop <= docViewBottom) && (elemTop >= docViewTop))
+    }
 
-      if (elementScrolled('.skills1')) {
-        $(document).ready(function () {
-          $('#' + key).animate({width: codeValue + '%'}, 1000)
-        })
-      }
-      var user          = 'mickwhite', domain = 'protonmail.com', element = document.getElementById('email');
-      element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>'
-    })
-  }
+    if (elementScrolled('.skills1')) {
+      $(document).ready(function () {
+        $('#' + key).animate({width: codeValue + '%'}, 1000)
+      })
+    }
+  })
+}
+//secure display email in DOM
+var user          = 'mickwhite', domain = 'protonmail.com', element = document.getElementById('email');
+element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>';
 
-  function addDays(date, daysToAdd) {
-    var _24HoursInMilliseconds = 86400000;
-    return new Date(date.getTime() + daysToAdd * _24HoursInMilliseconds)
-  };
+//set contributions chart
+function addDays(date, daysToAdd) {
+  var _24HoursInMilliseconds = 86400000;
+  return new Date(date.getTime() + daysToAdd * _24HoursInMilliseconds)
+};
 
-  var d          = new Date();
-  var yestDate   = d.getDate() - 1;
-  var yestMonth  = d.getMonth();
-  var month      = 0;
-  var currHour   = d.getHours();
-  var currMonth  = month - 10;
-  var currDay    = d.getDay();
-  var currDate   = d.getDate();
-  var curr_year  = d.getFullYear();
-  var monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const squares  = document.querySelector('.squares');
-  var menuMonths = [];
-  var count      = 12;
+var d          = new Date();
+var month      = 0;
+var currHour   = d.getHours();
+var currMonth  = month - 10;
+var currDay    = d.getDay();
+var currDate   = d.getDate();
+var monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const squares  = document.querySelector('.squares');
+var menuMonths = [];
+var count      = 12;
 
 //position last square of grid on correct day or week
-// var currentMonthAdjust = 364 - lastDayOfMonth + currDate ;
-  var display_to_today = 343 + ((Math.floor(currDate / 7) * 7) + currDay);
-  if (currHour > 10) {// display today's square with contributions only after 10am
-    display_to_today = display_to_today + 1;
-  }
-  for (var i = 0; i < display_to_today; i += 1) {
-    var level = Math.floor(Math.random() * 25);
-    if (level === 1) {
-      var popupText = 'contribution on '
-    } else {
-      popupText = 'contributions on '
-    }
-
-    var now        = new Date();
-    var flexDate   = addDays(now, i - 366);
-    var contrDate  = flexDate.getDate() + ' ' + monthArray[flexDate.getMonth()] + ', ' + flexDate.getFullYear();
-    var shortDate  = flexDate.getDate() + ' ' + monthArray[flexDate.getMonth()];
-    var contrDay   = flexDate.getDay();
-    var holidays   = ['21 Dec', '22 Dec', '23 Dec', '24 Dec', '25 Dec', '26 Dec', '27 Dec', '28 Dec', '29 Dec', '30 Dec', '31 Dec', '1 Jan', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul', '9 Jul', '10 Jul', '11 Jul', '12 Jul', '13 Jul', '14 Jul', '15 Jul', '16 Jul', '17 Jul', '18 Jul', '19 Jul', '3 Oct', '4 Oct', '5 Oct', '6 Oct', '7 Oct', '8 Oct', '9 Oct', '10 Oct', '11 Oct', '12 Oct'];
-    var textInsert = `<span class="bubble-arrow">` + ` ${level} ` + popupText + contrDate + `</span></li>`;
-
-    if (holidays.indexOf(shortDate) > -1 || contrDay === 0) {//sundays and holidays
-      level = 0;
-      squares.insertAdjacentHTML('beforeend', `<li class="tips"><span class="bubble-arrow">0 ` + popupText + contrDate + `</span></li>`);
-      if (i < 84) {
-        $('.tips').addClass('short');
-      }
-    } else {
-      squares.insertAdjacentHTML('beforeend', `<li class="tips" data-level="${level}">` + textInsert)
-    }
-  }
-
-  while (count > 0) {
-    if (currMonth < 0) {
-      currMonth += 12
-    }
-    if (currMonth >= 12) {
-      currMonth -= 12
-    }
-    var month = monthArray[currMonth];
-    menuMonths.push(month);
-    currMonth = currMonth + 1;
-    count     = count - 1
-  }
-  for (var i = 0; i < 12; i += 1) {
-    var monthList = "<li>" + menuMonths[i] + "</li>";
-    document.getElementById("months").innerHTML += monthList
-  }
-  if (currDay === 0) {
-    var yesterday = yestDate - 1 + " " + monthArray[yestMonth] + ", " + curr_year
-  } else if (currDay === 1) {
-    var yesterday = yestDate - 2 + " " + monthArray[yestMonth] + ", " + curr_year + " (last Friday)"
+var display_to_today = 343 + ((Math.floor(currDate / 7) * 7) + currDay);
+if (currHour >= 10) {// display today's square with contributions only after 10am
+  display_to_today = display_to_today + 1;
+}
+for (var i = 0; i < display_to_today; i += 1) {
+  var level = Math.floor(Math.random() * 25);
+  if (level === 1) {
+    var popupText = 'contribution on '
   } else {
-    var yesterday = yestDate + " " + monthArray[yestMonth] + ", " + curr_year + " (yesterday)"
+    popupText = 'contributions on '
   }
-  $('.tips').hover(function () {
-    $(this).toggleClass('show-tips');
-  });
 
-//chart script
-  var randomScalingFactor = function () {
-    return Math.round(Math.random() * 100);
-  };
+  var now        = new Date();
+  var flexDate   = addDays(now, i - (364 + currDay));
+  var contrDate  = flexDate.getDate() + ' ' + monthArray[flexDate.getMonth()] + ', ' + flexDate.getFullYear();
+  var shortDate  = flexDate.getDate() + ' ' + monthArray[flexDate.getMonth()];
+  var contrDay   = flexDate.getDay();
+  var holidays   = ['21 Dec', '22 Dec', '23 Dec', '24 Dec', '25 Dec', '26 Dec', '27 Dec', '28 Dec', '29 Dec', '30 Dec', '31 Dec', '1 Jan', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul', '9 Jul', '10 Jul', '11 Jul', '12 Jul', '13 Jul', '14 Jul', '15 Jul', '16 Jul', '17 Jul', '18 Jul', '19 Jul', '3 Oct', '4 Oct', '5 Oct', '6 Oct', '7 Oct', '8 Oct', '9 Oct', '10 Oct', '11 Oct', '12 Oct'];
+  var textInsert = `<span class="bubble-arrow">` + ` ${level} ` + popupText + contrDate + `</span></li>`;
 
-  var config = {
-    type: 'pie',
-    data: {
-      datasets: [{
-        data: [
-          HTML,
-          CSS,
-          JS,
-          VUE,
-        ],
-        backgroundColor: [
-          window.chartColors.orange,
-          window.chartColors.yellow,
-          window.chartColors.green,
-          window.chartColors.blue,
-        ],
-      }],
-      labels: [
-        'HTML',
-        'CSS',
-        'JS',
-        'VUE'
-      ]
-    },
-    options: {
-      responsive: true,
-      legend: false,
-      labels: true,
-      tooltips: {
-        // Disable the on-canvas tooltip
-        enabled: false,
-        custom: function (tooltipModel) {
-          // Tooltip Element
-          var tooltipEl = document.getElementById('chartjs-tooltip');
-          // Create element on first render
-          if (!tooltipEl) {
-            tooltipEl           = document.createElement('div');
-            tooltipEl.id        = 'chartjs-tooltip';
-            tooltipEl.innerHTML = "<table></table>";
-            document.body.appendChild(tooltipEl);
-            console.log(tooltipEl);
-          }
-          // Set caret Position
-          tooltipEl.classList.remove('above', 'below', 'no-transform');
-          if (tooltipModel.yAlign) {
-            tooltipEl.classList.add(tooltipModel.yAlign);
-          } else {
-            tooltipEl.classList.add('no-transform');
-          }
+  if (holidays.indexOf(shortDate) > -1 || contrDay === 0) {//sundays and holidays
+    level = 0;
+    squares.insertAdjacentHTML('beforeend', `<li class="tips"><span class="bubble-arrow">0 ` + popupText + contrDate + `</span></li>`);
+    if (i < 84) {
+      $('.tips').addClass('short');
+    }
+  } else {
+    squares.insertAdjacentHTML('beforeend', `<li class="tips" data-level="${level}">` + textInsert)
+  }
+}
 
-          function getBody(bodyItem) {
-            return bodyItem.lines;
-          }
+while (count > 0) {
+  if (currMonth < 0) {
+    currMonth += 12
+  }
+  if (currMonth >= 12) {
+    currMonth -= 12
+  }
+  var month = monthArray[currMonth];
+  menuMonths.push(month);
+  currMonth = currMonth + 1;
+  count     = count - 1
+}
+for (var i = 0; i < 12; i += 1) {
+  var monthList = "<li>" + menuMonths[i] + "</li>";
+  document.getElementById("months").innerHTML += monthList
+}
 
-          // Set Text
-          if (tooltipModel.body) {
-            var titleLines = tooltipModel.title || [];
-            var bodyLines  = tooltipModel.body.map(getBody);
-            var innerHtml  = '<thead>';
+$('.tips').hover(function () {
+  $(this).toggleClass('show-tips');
+});
 
-            titleLines.forEach(function (title) {
-              innerHtml += '<tr><th>' + title + '</th></tr>';
-            });
-            innerHtml += '</thead><tbody>';
-
-            bodyLines.forEach(function (body, i) {
-              const uniqueClass = body.map(([v]) => v);
-              var colors        = tooltipModel.labelColors[i];
-              var style         = 'background-color:' + colors.backgroundColor;
-              style += '; border-color:' + colors.borderColor;
-              style += '; border-width: 2px';
-              var span          = '<span class="' + uniqueClass + '" style="' + style + '"></span>';
-              innerHtml += '<tr><td>' + span + body + '%</td></tr>';
-            });
-            innerHtml += '</tbody>';
-
-            var tableRoot       = tooltipEl.querySelector('table');
-            tableRoot.innerHTML = innerHtml;
-          }
-
-          // `this` will be the overall tooltip
-          var position = this._chart.canvas.getBoundingClientRect();
-
-          // Display, position, and set styles for font
-          tooltipEl.style.opacity       = 1;
-          tooltipEl.style.position      = 'absolute';
-          tooltipEl.style.left          = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
-          tooltipEl.style.top           = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
-          tooltipEl.style.fontFamily    = tooltipModel._bodyFontFamily;
-          tooltipEl.style.fontSize      = tooltipModel.bodyFontSize + 'px';
-          tooltipEl.style.fontStyle     = tooltipModel._bodyFontStyle;
-          tooltipEl.style.padding       = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
-          tooltipEl.style.pointerEvents = 'none';
+//pie chart
+var config = {
+  type: 'pie',
+  data: {
+    datasets: [{
+      data: [
+        HTML,
+        CSS,
+        JS,
+        VUE,
+      ],
+      backgroundColor: [
+        window.chartColors.orange,
+        window.chartColors.yellow,
+        window.chartColors.green,
+        window.chartColors.blue,
+      ],
+    }],
+    labels: [
+      'HTML',
+      'CSS',
+      'JS',
+      'VUE'
+    ],
+    icons: [
+      '../img/icons/javascript.png',
+      '../img/icons/javascript.png',
+      '../img/icons/javascript.png',
+      '../img/icons/javascript.png'
+    ]
+  },
+  options: {
+    responsive: true,
+    legend: false,
+    labels: true,
+    cutoutPercentage: 0,
+    animation:{animateScale: true},
+    tooltips: {
+      // Disable the on-canvas tooltip
+      enabled: false,
+      //customise toolstips
+      custom: function (tooltipModel) {
+        // Tooltip Element
+        var tooltipEl = document.getElementById('chartjs-tooltip');
+        // Create element on first render
+        if (!tooltipEl) {
+          tooltipEl           = document.createElement('div');
+          tooltipEl.id        = 'chartjs-tooltip';
+          tooltipEl.innerHTML = "<table></table>";
+          document.body.appendChild(tooltipEl);
         }
+        // Set caret Position
+        tooltipEl.classList.remove('above', 'below', 'no-transform');
+        if (tooltipModel.yAlign) {
+          tooltipEl.classList.add(tooltipModel.yAlign);
+        } else {
+          tooltipEl.classList.add('no-transform');
+        }
+
+        function getBody(bodyItem) {
+          return bodyItem.lines;
+        }
+
+        // Set Text
+        if (tooltipModel.body) {
+          var bodyLines  = tooltipModel.body.map(getBody);
+          var innerHtml  = '<thead>';
+
+
+          bodyLines.forEach(function (body, i) {
+            const uniqueClass = body.map(([v]) => v);
+            var colors        = tooltipModel.labelColors[i];
+            var style         = 'background-color:' + colors.backgroundColor;
+            var span          = '<span class="hover ' + uniqueClass + '" style="' + style + '"></span>';
+            innerHtml += '<tr><td>' + span + body + '%</td></tr>';
+            console.log(span);
+          });
+          innerHtml += '</tbody>';
+
+          var tableRoot       = tooltipEl.querySelector('table');
+          tableRoot.innerHTML = innerHtml;
+        }
+        // `this` will be the overall tooltip
+        var position = this._chart.canvas.getBoundingClientRect();
+        // Display, position, and set styles for font
+        tooltipEl.style.opacity       = 1;
+        tooltipEl.style.position      = 'absolute';
+        tooltipEl.style.left          = position.left + window.pageXOffset + tooltipModel.caretX - 20 + 'px';
+        tooltipEl.style.top           = position.top + window.pageYOffset + tooltipModel.caretY - 20+ 'px';
+        tooltipEl.style.fontFamily    = tooltipModel._bodyFontFamily;
+        tooltipEl.style.fontSize      = tooltipModel.bodyFontSize + 'px';
+        tooltipEl.style.fontStyle     = tooltipModel._bodyFontStyle;
+        tooltipEl.style.padding       = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
+        tooltipEl.style.pointerEvents = 'none';
       }
     }
-  };
+  }
+};
+//render pie chart
+window.onload = function () {
+  var ctx      = document.getElementById('chart-area').getContext('2d');
+  window.myPie = new Chart(ctx, config);
+};
 
-  window.onload = function () {
-    var ctx      = document.getElementById('chart-area').getContext('2d');
-    window.myPie = new Chart(ctx, config);
-  };
+// apod background image for masthead
+var url = "https://api.nasa.gov/planetary/apod?api_key=AMz8lkRfduSiN1E4csXepee4xIptaPmASqDBFjEh";
 
-  var url = "https://api.nasa.gov/planetary/apod?api_key=AMz8lkRfduSiN1E4csXepee4xIptaPmASqDBFjEh";
-
-
-  $.ajax({
-    url: url,
-    success: function(result){
-      if(result.media_type === "video") {
-        result.url = "https://apod.nasa.gov/apod/image/1902/RedSprites_Broady_960.jpg";
-      }
-      $("header.masthead").css("background-image", 'url(' + result.url + ')');
+$.ajax({
+  url: url,
+  success: function(result){
+    //if image of day is video, use fallback image
+    if(result.media_type === "video") {
+      result.url = "https://apod.nasa.gov/apod/image/1902/RedSprites_Broady_960.jpg";
     }
-  });
-})(jQuery); // End of use strict
-
-
+    $("header.masthead").css("background-image", 'url(' + result.url + ')');
+  }
+});

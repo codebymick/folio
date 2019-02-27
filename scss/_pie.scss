@@ -1,0 +1,29 @@
+
+span {
+  .hover {
+    border: 1px solid red!important;
+    background-size: contain;
+    display: block;
+    width: 100px;
+    height: 100px;
+
+    &.J:before {
+      content: url('../img/icons/javascript.png');
+      height: 40px;
+      width: 40px;
+      display: block;
+    }
+
+    &.H {
+      border: 10px solid blue !important;
+    }
+
+    &.C {
+      border: 10px solid green !important;
+    }
+
+    &.V {
+      border: 10px solid orange !important;
+    }
+  }
+}
