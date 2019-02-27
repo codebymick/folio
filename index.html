@@ -55,90 +55,94 @@
 <section id="skills">
   <div class="container">
     <div class="row h-100 align-items-center">
-      <div class="col-lg-6 mx-auto text-center">
+      <div class="col-lg-4 col-md-6 col-sm-12 text-center">
         <h3 class="mb-3">
         <span id="timedate"><p> Total code time today: </p> <a id="h">00</a>: <a id="m">00</a>: <a id="s">00</a>
         </span>
         </h3>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4 col-md-6 col-sm-12">
         <div id="canvas-holder mx-auto">
           <canvas id="chart-area"></canvas>
         </div>
       </div>
+      <div id="skill-wrapper" class="col-lg-4 col-md-6 col-sm-12 text-center">
+
+      </div>
     </div>
 
-
-    <div class="row skills1">
-      <div class="col-lg-3 col-md-6 text-center">
-        <div class="service-box mt-5 mx-auto"><i class="fab fa-4x fa-html5 text-primary mb-3 sr-icon-1"></i>
-          <h3 class="mb-3">HTML</h3>
-          <div class="skill_bar">
-            <div id="HTML" class="skill_bar_progress html">95%</div>
+  </div>
+  <div class="row contributions">
+    <div class="col-lg-12 mx-auto d-sm-none d-lg-flex d-md-none">
+      <div class="graph">
+        <ul id="months" class="months"></ul>
+        <ul class="days">
+          <li>Sun</li>
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
+        </ul>
+        <ul class="squares"></ul>
+        <div class="legend-wrapper">
+          <div class="description">A summary of my daily pull requests, issues opened, and commits.
+            (GITLAB)
           </div>
-          <p class="text-muted mb-0">I build well structured and simple HTML. I keep it clean, simple and
-            light.</p></div>
-      </div>
-      <div class="col-lg-3 col-md-6 text-center">
-        <div class="service-box mt-5 mx-auto"><i class="fab fa-4x fa-css3 text-primary mb-3 sr-icon-2"></i>
-          <h3 class="mb-3">CSS</h3>
-          <div class="skill_bar">
-            <div id="CSS" class="skill_bar_progress css">98%</div>
-          </div>
-          <p class="text-muted mb-0">I am confident and handy with CSS. These days I'm taking it to the next
-            level with SASS.</p></div>
-      </div>
-      <div class="col-lg-3 col-md-6 text-center">
-        <div class="service-box mt-5 mx-auto"><i class="fab fa-4x fa-js-square text-primary mb-3 sr-icon-3"></i>
-          <h3 class="mb-3">Javascript</h3>
-          <div class="skill_bar">
-            <div id="JS" class="skill_bar_progress js">82%</div>
-          </div>
-          <p class="text-muted mb-0">My absolute favourite elemnt of working frontend projects. I enjoy using
-            JS with and without libraries.</p></div>
-      </div>
-      <div class="col-lg-3 col-md-6 text-center">
-        <div class="service-box mt-5 mx-auto"><i class="fab fa-4x fa-vuejs text-primary mb-3 sr-icon-4"></i>
-          <h3 class="mb-3"> Vue</h3>
-          <div class="skill_bar">
-            <div id="VUE" class="skill_bar_progress vue">78%</div>
-          </div>
-          <p class="text-muted mb-0"> My new favourite framework makes for sweet, light single page apps and
-            my vocab improves with every project.</p></div>
-      </div>
-    </div>
-    <div class="row contributions">
-      <div class="col-lg-12 mx-auto d-sm-none d-lg-flex d-md-none">
-        <div class="graph">
-          <ul id="months" class="months"></ul>
-          <ul class="days">
-            <li>Sun</li>
-            <li>Mon</li>
-            <li>Tue</li>
-            <li>Wed</li>
-            <li>Thu</li>
-            <li>Fri</li>
-            <li>Sat</li>
-          </ul>
-          <ul class="squares"></ul>
-          <div class="legend-wrapper">
-            <div class="description">A summary of my daily pull requests, issues opened, and commits.
-              (GITLAB)
-            </div>
-            <div class="contrib-legend text-gray"> Less
-              <ul class="legend">
-                <li style="background-color: #ffedcc"></li>
-                <li style="background-color: #ffdb99"></li>
-                <li style="background-color: #ffc966"></li>
-                <li style="background-color: #ffb732"></li>
-                <li style="background-color: #ffa500"></li>
-              </ul>
-              More
-            </div>
+          <div class="contrib-legend text-gray"> Less
+            <ul class="legend">
+              <li style="background-color: #ffedcc"></li>
+              <li style="background-color: #ffdb99"></li>
+              <li style="background-color: #ffc966"></li>
+              <li style="background-color: #ffb732"></li>
+              <li style="background-color: #ffa500"></li>
+            </ul>
+            More
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="row skills1">
+    <div class="col-lg-3 col-md-6 text-center">
+      <i class="fab fa-4x fa-html5 text-primary mb-3 sr-icon-1"></i>
+      <h3 class="mb-3">HTML</h3>
+      <div class="skill_bar">
+      <div id="HTML" class="skill_bar_progress html">95%</div>
+      </div>
+      <p class="text-muted mb-0">I build well structured and simple HTML. I keep it clean, simple and
+      light.</p>
+    </div>
+    <div class="col-lg-3 col-md-6 text-center">
+      <div class="service-box mt-5 mx-auto"><i class="fab fa-4x fa-css3 text-primary mb-3 sr-icon-2"></i>
+        <h3 class="mb-3">CSS</h3>
+        <div class="skill_bar">
+          <div id="CSS" class="skill_bar_progress css">98%</div>
+        </div>
+        <p class="text-muted mb-0">I am confident and handy with CSS. These days I'm taking it to the next
+          level with SASS.</p></div>
+    </div>
+    <div class="col-lg-3 col-md-6 text-center">
+      <div class="service-box mt-5 mx-auto"><i class="fab fa-4x fa-js-square text-primary mb-3 sr-icon-3"></i>
+        <h3 class="mb-3">Javascript</h3>
+        <div class="skill_bar">
+          <div id="JS" class="skill_bar_progress js">82%</div>
+        </div>
+        <p class="text-muted mb-0">My absolute favourite elemnt of working frontend projects. I enjoy using
+          JS with and without libraries.</p></div>
+    </div>
+    <div class="col-lg-3 col-md-6 text-center">
+      <div class="service-box mt-5 mx-auto"><i class="fab fa-4x fa-vuejs text-primary mb-3 sr-icon-4"></i>
+        <h3 class="mb-3"> Vue</h3>
+        <div class="skill_bar">
+          <div id="VUE" class="skill_bar_progress vue">78%</div>
+        </div>
+        <p class="text-muted mb-0"> My new favourite framework makes for sweet, light single page apps and
+          my vocab improves with every project.</p></div>
+    </div>
+  </div>
+
   </div>
   </div></section>
 <section id="about">
@@ -146,9 +150,10 @@
     <div class="row">
       <div class="col-lg-8 mx-auto text-center">
         <h2 class="section-heading text-white text-shadow"> I've got what you
-        need!</h2>
+          need!</h2>
         <hr class="light my-4">
-        <p class="text-faded text-shadow mb-4">I'm qualified, experienced and driven. <br>I pick up new ideas quickly, work
+        <p class="text-faded text-shadow mb-4">I'm qualified, experienced and driven. <br>I pick up new ideas quickly,
+          work
           well to deadlines and love a challenge.</p></div>
     </div>
   </div>
@@ -156,8 +161,8 @@
 <section id="resume">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 col-md-6 text-center"><h5 class="bold"><a href="https://www.innovationmecom.de"
-                                                                      target="_blank"> Innovation Mecom GmbH </a>
+      <div class="col-lg-12 col-md-6 text-center"><h5 class="bold">
+        <a href="https://www.innovationmecom.de" target="_blank"> Innovation Mecom GmbH </a>
       </h5>
         <p><span> Frontend Developer </span><span class="small i"> [June, 2018 - current]</span></p>
         <hr>

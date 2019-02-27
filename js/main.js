@@ -113,18 +113,20 @@ function initClock() {
     if (H > 8 && H < 17) {
       window.setInterval("updateClock()", 1)
     } else if (H > 17) {
-        $('#timedate').multiline('Total code time today: \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
-      } else {
-        $('#timedate').multiline('Total code time yesterday: \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
-      }
+      $('#timedate').multiline('Total code time today: \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
     } else {
-      $('#timedate').multiline('Total code time Friday: \n \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
+      $('#timedate').multiline('Total code time yesterday: \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
+    }
+  } else {
+    $('#timedate').multiline('Total code time Friday: \n \n' + getRandomInt(6, 8) + ' hrs: ' + getRandomInt(2, 59) + ' minutes')
   }
 }
 
 Number.prototype.pad = function (n) {
   for (var r = this.toString();
-       r.length < n; r = 0 + r) {};
+       r.length < n; r = 0 + r) {
+  }
+  ;
   return r
 };
 
@@ -252,7 +254,8 @@ $('.tips').hover(function () {
 });
 
 //pie chart
-var config = {
+
+var config    = {
   type: 'pie',
   data: {
     datasets: [{
@@ -268,18 +271,18 @@ var config = {
         window.chartColors.green,
         window.chartColors.blue,
       ],
+      description: [
+        'blah vlah blah',
+        'blah vlah blah',
+        'blah vlah blah',
+        'blah vlah blah'
+      ]
     }],
     labels: [
       'HTML',
       'CSS',
       'JS',
       'VUE'
-    ],
-    icons: [
-      '../img/icons/javascript.png',
-      '../img/icons/javascript.png',
-      '../img/icons/javascript.png',
-      '../img/icons/javascript.png'
     ]
   },
   options: {
@@ -287,27 +290,26 @@ var config = {
     legend: false,
     labels: true,
     cutoutPercentage: 0,
-    animation:{animateScale: true},
+    animation: {animateScale: true},
     tooltips: {
       // Disable the on-canvas tooltip
       enabled: false,
-      //customise toolstips
+      description: [
+        'blah vlah blah',
+        'blah vlah blah',
+        'blah vlah blah',
+        'blah vlah blah'
+      ],
+      //customise tooltips
       custom: function (tooltipModel) {
         // Tooltip Element
-        var tooltipEl = document.getElementById('chartjs-tooltip');
+        var tooltipEl = document.getElementById('skill-container');
         // Create element on first render
         if (!tooltipEl) {
           tooltipEl           = document.createElement('div');
-          tooltipEl.id        = 'chartjs-tooltip';
-          tooltipEl.innerHTML = "<table></table>";
-          document.body.appendChild(tooltipEl);
-        }
-        // Set caret Position
-        tooltipEl.classList.remove('above', 'below', 'no-transform');
-        if (tooltipModel.yAlign) {
-          tooltipEl.classList.add(tooltipModel.yAlign);
-        } else {
-          tooltipEl.classList.add('no-transform');
+          tooltipEl.id        = 'skill-container';
+          tooltipEl.innerHTML = `<div class="service-box mx-auto"></div>`;
+          document.getElementById('skill-wrapper').appendChild(tooltipEl);
         }
 
         function getBody(bodyItem) {
@@ -316,39 +318,29 @@ var config = {
 
         // Set Text
         if (tooltipModel.body) {
-          var bodyLines  = tooltipModel.body.map(getBody);
-          var innerHtml  = '<thead>';
-
+          // const uniqueClass = body.map(([v]) => v);
+          var bodyLines = tooltipModel.body.map(getBody);
+          var innerHtml = ``;
 
           bodyLines.forEach(function (body, i) {
-            const uniqueClass = body.map(([v]) => v);
-            var colors        = tooltipModel.labelColors[i];
-            var style         = 'background-color:' + colors.backgroundColor;
-            var span          = '<span class="hover ' + uniqueClass + '" style="' + style + '"></span>';
-            innerHtml += '<tr><td>' + span + body + '%</td></tr>';
-            console.log(span);
+            var colors        = tooltipModel.datasets.description[i];
+            // var description =  this.options.data.datasets[i].description;
+            var content = `<i class="fab fa-4x fa-html5 text-primary mb-3 sr-icon-1"></i>
+          <h3 class="mb-3">HTML</h3>
+          <div class="skill_bar">
+            <div id="HTML" class="skill_bar_progress html">95%</div>
+          </div>
+          <p class="text-muted mb-0">` + colors + `</p>`;
+            innerHtml += content + body;
           });
-          innerHtml += '</tbody>';
-
-          var tableRoot       = tooltipEl.querySelector('table');
+          var tableRoot       = tooltipEl.querySelector('div');
           tableRoot.innerHTML = innerHtml;
         }
-        // `this` will be the overall tooltip
-        var position = this._chart.canvas.getBoundingClientRect();
-        // Display, position, and set styles for font
-        tooltipEl.style.opacity       = 1;
-        tooltipEl.style.position      = 'absolute';
-        tooltipEl.style.left          = position.left + window.pageXOffset + tooltipModel.caretX - 20 + 'px';
-        tooltipEl.style.top           = position.top + window.pageYOffset + tooltipModel.caretY - 20+ 'px';
-        tooltipEl.style.fontFamily    = tooltipModel._bodyFontFamily;
-        tooltipEl.style.fontSize      = tooltipModel.bodyFontSize + 'px';
-        tooltipEl.style.fontStyle     = tooltipModel._bodyFontStyle;
-        tooltipEl.style.padding       = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
-        tooltipEl.style.pointerEvents = 'none';
       }
     }
   }
 };
+
 //render pie chart
 window.onload = function () {
   var ctx      = document.getElementById('chart-area').getContext('2d');
@@ -360,9 +352,9 @@ var url = "https://api.nasa.gov/planetary/apod?api_key=AMz8lkRfduSiN1E4csXepee4x
 
 $.ajax({
   url: url,
-  success: function(result){
+  success: function (result) {
     //if image of day is video, use fallback image
-    if(result.media_type === "video") {
+    if (result.media_type === "video") {
       result.url = "https://apod.nasa.gov/apod/image/1902/RedSprites_Broady_960.jpg";
     }
     $("header.masthead").css("background-image", 'url(' + result.url + ')');

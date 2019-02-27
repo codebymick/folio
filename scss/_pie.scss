@@ -1,14 +1,19 @@
 
 span {
   .hover {
-    border: 1px solid red!important;
+    border: 10px solid red!important;
     background-size: contain;
     display: block;
     width: 100px;
     height: 100px;
+    background-image: url('../img/icons/javascript.png');
 
-    &.J:before {
+
+    &.J {
       content: url('../img/icons/javascript.png');
+      position: absolute;
+      top: 0;
+      left: 0;
       height: 40px;
       width: 40px;
       display: block;

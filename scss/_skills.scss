@@ -1,5 +1,5 @@
-.spec-button {
-  background-image: linear-gradient(to bottom right, red, yellow);
+#html-wrapper, #css-wrapper, #js-wrapper, #vue-wrapper{
+  display: none;
 }
 
 .progress {
@@ -51,28 +51,10 @@
   filter: blur(5px)
 }
 
-.logo {
-  content: url('https://agmicom.com/folio/img/logo.png');
-  height: 40px;
-  width: 40px;
-}
-
-.navbar-shrink .logo {
-  filter: invert(1)
-}
-
-#chartContainer {
-  width: 200px !important;
-  float: right;
-}
-
-.canvasjs-chart-canvas {
-  right: 0;
-}
 
 :root {
-  --square-size: 15px;
-  --square-gap: 3px;
+  --square-size: .8rem;
+  --square-gap: .2rem;
   --week-width: calc(var(--square-size) + var(--square-gap));
 }
 
@@ -87,27 +69,6 @@ ul {
     text-align: center;
   }
 }
-
-//span {
-//  &.J {
-//    border: 10px solid red !important;
-//    &:before{
-//      content: 'vue';
-//    }
-//  }
-//
-//  &.H {
-//    border: 10px solid blue !important;
-//  }
-//
-//  &.C {
-//    border: 10px solid green !important;
-//  }
-//
-//  &.V {
-//    border: 10px solid orange !important;
-//  }
-//}
 
 .days {
   grid-area: days;
@@ -274,8 +235,4 @@ ul {
       width: 10px;
     }
   }
-}
-
-.contributions {
-  overflow-x: scroll;
 }
