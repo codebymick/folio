@@ -74,14 +74,14 @@
       }
     }
   }
-  .logo {
-    content: url('https://agmicom.com/folio/img/logo.png');
-    height: 40px;
-    width: 40px;
-  }
-
-  .navbar-shrink .logo {
-    filter: invert(1)
-  }
 }
 
+.logo {
+  content: url('https://agmicom.com/folio/img/logo.png');
+  height: 40px;
+  width: 40px;
+}
+
+.navbar-shrink .logo {
+  filter: invert(1)
+}

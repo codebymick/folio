@@ -201,7 +201,7 @@ var menuMonths = [];
 var count      = 12;
 
 //position last square of grid on correct day or week
-var display_to_today = 343 + ((Math.floor(currDate / 7) * 7) + currDay);
+var display_to_today = 336 + ((Math.floor(currDate / 7) * 7) + currDay);
 if (currHour >= 10) {// display today's square with contributions only after 10am
   display_to_today = display_to_today + 1;
 }
@@ -293,50 +293,50 @@ var config    = {
     animation: {animateScale: true},
     tooltips: {
       // Disable the on-canvas tooltip
-      enabled: false,
-      description: [
-        'blah vlah blah',
-        'blah vlah blah',
-        'blah vlah blah',
-        'blah vlah blah'
-      ],
-      //customise tooltips
-      custom: function (tooltipModel) {
-        // Tooltip Element
-        var tooltipEl = document.getElementById('skill-container');
-        // Create element on first render
-        if (!tooltipEl) {
-          tooltipEl           = document.createElement('div');
-          tooltipEl.id        = 'skill-container';
-          tooltipEl.innerHTML = `<div class="service-box mx-auto"></div>`;
-          document.getElementById('skill-wrapper').appendChild(tooltipEl);
-        }
-
-        function getBody(bodyItem) {
-          return bodyItem.lines;
-        }
-
-        // Set Text
-        if (tooltipModel.body) {
-          // const uniqueClass = body.map(([v]) => v);
-          var bodyLines = tooltipModel.body.map(getBody);
-          var innerHtml = ``;
-
-          bodyLines.forEach(function (body, i) {
-            var colors        = tooltipModel.datasets.description[i];
-            // var description =  this.options.data.datasets[i].description;
-            var content = `<i class="fab fa-4x fa-html5 text-primary mb-3 sr-icon-1"></i>
-          <h3 class="mb-3">HTML</h3>
-          <div class="skill_bar">
-            <div id="HTML" class="skill_bar_progress html">95%</div>
-          </div>
-          <p class="text-muted mb-0">` + colors + `</p>`;
-            innerHtml += content + body;
-          });
-          var tableRoot       = tooltipEl.querySelector('div');
-          tableRoot.innerHTML = innerHtml;
-        }
-      }
+      enabled: true,
+      // description: [
+      //   'blah vlah blah',
+      //   'blah vlah blah',
+      //   'blah vlah blah',
+      //   'blah vlah blah'
+      // ],
+      // //customise tooltips
+      // custom: function (tooltipModel) {
+      //   // Tooltip Element
+      //   var tooltipEl = document.getElementById('skill-container');
+      //   // Create element on first render
+      //   if (!tooltipEl) {
+      //     tooltipEl           = document.createElement('div');
+      //     tooltipEl.id        = 'skill-container';
+      //     tooltipEl.innerHTML = `<div class="service-box mx-auto"></div>`;
+      //     document.getElementById('skill-wrapper').appendChild(tooltipEl);
+      //   }
+      //
+      //   function getBody(bodyItem) {
+      //     return bodyItem.lines;
+      //   }
+      //
+      //   // Set Text
+      //   if (tooltipModel.body) {
+      //     // const uniqueClass = body.map(([v]) => v);
+      //     var bodyLines = tooltipModel.body.map(getBody);
+      //     var innerHtml = ``;
+      //
+      //     bodyLines.forEach(function (body, i) {
+      //       // var colors        = tooltipModel.datasets.description[i];
+      //       var description =  this.options.data.datasets[i].description;
+      //       var content = `<i class="fab fa-4x fa-html5 text-primary mb-3 sr-icon-1"></i>
+      //     <h3 class="mb-3">HTML</h3>
+      //     <div class="skill_bar">
+      //       <div id="HTML" class="skill_bar_progress html">95%</div>
+      //     </div>
+      //     <p class="text-muted mb-0">`  + `</p>`;
+      //       innerHtml += content + body;
+      //     });
+      //     var tableRoot       = tooltipEl.querySelector('div');
+      //     tableRoot.innerHTML = innerHtml;
+      //   }
+      // }
     }
   }
 };
