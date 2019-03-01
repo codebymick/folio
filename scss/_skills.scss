@@ -1,4 +1,4 @@
-#html-wrapper, #css-wrapper, #js-wrapper, #vue-wrapper{
+#html-wrapper, #css-wrapper, #js-wrapper, #vue-wrapper {
   display: none;
 }
 
@@ -75,17 +75,6 @@ ul {
   padding-left: 0;
 }
 
-.squares {
-  grid-area: squares;
-}
-
-.graph {
-  display: inline-grid;
-  grid-template-areas: "empty months" "days squares";
-  grid-template-columns: auto 1fr;
-  grid-gap: 10px;
-}
-
 .months {
   display: grid;
   grid-template-columns: calc(var(--week-width) * 4) calc(var(--week-width) * 4) calc(var(--week-width) * 4) calc(var(--week-width) * 5) calc(var(--week-width) * 4) calc(var(--week-width) * 4) calc(var(--week-width) * 5) calc(var(--week-width) * 4) calc(var(--week-width) * 4) calc(var(--week-width) * 5) calc(var(--week-width) * 4) calc(var(--week-width) * 5);
@@ -98,11 +87,16 @@ ul {
 }
 
 .squares {
+  grid-area: squares;
   grid-auto-flow: column;
   grid-auto-columns: var(--square-size);
 }
 
 .graph {
+  display: inline-grid;
+  grid-template-areas: "empty months" "days squares";
+  grid-template-columns: auto 1fr;
+  grid-gap: .8rem;
   padding: 20px 0;
   margin: 20px auto;
   position: relative;
@@ -173,37 +167,39 @@ ul {
   }
 }
 
-.squares li {
-  background-color: lightgray;
-  z-index: 0;
-  position: relative;
+.squares {
+  li {
+    background-color: lightgray;
+    z-index: -1;
+    position: relative;
 
-  &[data-level="null"] {
-    background-color: transparent;
-  }
+    &[data-level="null"] {
+      background-color: transparent;
+    }
 
-  &[data-level="1"] {
-    background-color: #ffedcc;
-  }
+    &[data-level="1"] {
+      background-color: #ffedcc;
+    }
 
-  &[data-level="2"], &[data-level="3"] {
-    background-color: #ffdb99;
-  }
+    &[data-level="2"], &[data-level="3"] {
+      background-color: #ffdb99;
+    }
 
-  &[data-level="4"], &[data-level="5"], &[data-level="6"], &[data-level="7"], &[data-level="8"], &[data-level="9"], &[data-level="10"], &[data-level="11"], &[data-level="12"] {
-    background-color: #ffc966;
-  }
+    &[data-level="4"], &[data-level="5"], &[data-level="6"], &[data-level="7"], &[data-level="8"], &[data-level="9"], &[data-level="10"], &[data-level="11"], &[data-level="12"] {
+      background-color: #ffc966;
+    }
 
-  &[data-level="13"], &[data-level="14"], &[data-level="15"], &[data-level="16"], &[data-level="17"], &[data-level="18"], &[data-level="19"], &[data-level="20"] {
-    background-color: #ffb732;
-  }
+    &[data-level="13"], &[data-level="14"], &[data-level="15"], &[data-level="16"], &[data-level="17"], &[data-level="18"], &[data-level="19"], &[data-level="20"] {
+      background-color: #ffb732;
+    }
 
-  &[data-level="21"], &[data-level="22"], &[data-level="23"], &[data-level="24"], &[data-level="25"] {
-    background-color: #ffa500;
-  }
+    &[data-level="21"], &[data-level="22"], &[data-level="23"], &[data-level="24"], &[data-level="25"] {
+      background-color: #ffa500;
+    }
 
-  &[data-level="red"] {
-    background-color: red !important;
+    &[data-level="red"] {
+      background-color: red !important;
+    }
   }
 }
 
@@ -236,6 +232,7 @@ ul {
     }
   }
 }
-.contributions{
+
+.contributions {
   overflow-x: scroll;
 }
