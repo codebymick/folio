@@ -187,7 +187,10 @@ element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>';
 function addDays(date, daysToAdd) {
   var _24HoursInMilliseconds = 86400000;
   return new Date(date.getTime() + daysToAdd * _24HoursInMilliseconds)
-};
+}
+function daysInMonth(month,year) {
+  return new Date(year, month, 0).getDate();
+}
 
 var d          = new Date();
 var month      = 0;
@@ -195,17 +198,21 @@ var currHour   = d.getHours();
 var currMonth  = month - 10;
 var currDay    = d.getDay();
 var currDate   = d.getDate();
+var currYear = d.getFullYear();
+var lastDayThisMonth = daysInMonth(currMonth, currYear);
+
 var monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const squares  = document.querySelector('.squares');
 var menuMonths = [];
 var count      = 12;
 
 //position last square of grid on correct day or week
-var display_to_today = 336 + ((Math.floor(currDate / 7) * 7) + currDay);
+var display_to_today = (364) + ((Math.floor(currDate / 7) * 7) + currDay);
 if (currHour >= 10) {// display today's square with contributions only after 10am
   display_to_today = display_to_today + 1;
 }
-for (var i = 0; i < display_to_today; i += 1) {
+//chart function
+for (var i = lastDayThisMonth; i < display_to_today; i += 1) {
   var level = Math.floor(Math.random() * 25);
   if (level === 1) {
     var popupText = 'contribution on '
@@ -231,10 +238,11 @@ for (var i = 0; i < display_to_today; i += 1) {
     squares.insertAdjacentHTML('beforeend', `<li class="tips" data-level="${level}">` + textInsert)
   }
 }
+//end of function
 
 while (count > 0) {
   if (currMonth < 0) {
-    currMonth += 12
+    currMonth += 13
   }
   if (currMonth >= 12) {
     currMonth -= 12
@@ -244,8 +252,8 @@ while (count > 0) {
   currMonth = currMonth + 1;
   count     = count - 1
 }
-for (var i = 0; i < 12; i += 1) {
-  var monthList = "<li>" + menuMonths[i] + "</li>";
+for (var j = 0; j < 12; j += 1) {
+  var monthList = "<li>" + menuMonths[j] + "</li>";
   document.getElementById("months").innerHTML += monthList
 }
 
