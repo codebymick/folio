@@ -114,3 +114,4 @@ css
 *.min.css
 .travis.yml
 .idea
+.idea/*.*
