@@ -88,8 +88,11 @@
       tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
     }
   });
-  var user          = 'codebymick', domain = 'gmail.com', element = document.getElementById('email');
-  element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>'
+  $(window).scroll(function () {
+    var user          = 'mickwhite', domain = 'protonmail.com', element = document.getElementById('email');
+    element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">Email</a>'
+  });
+
 
 })(jQuery); // End of use strict
 
@@ -146,17 +149,12 @@ function updateClock() {
 
 initClock();
 
+// var maxWidth = $('.skill_bar').width();
+
 function getRandomInt(min, maxWidth) {
   return Math.floor(Math.random() * (maxWidth - min + 1) + min)
 }
-function elementScrolled(elem) {
-  var docViewTop    = $(window).scrollTop();
-  var docViewBottom = docViewTop + $(window).height();
-  var elemTop       = $(elem).offset().top;
-  var elemBottom = elemTop + $(elem).outerHeight();
-  return (elemTop >= docViewTop) && (elemTop <= docViewBottom) || (elemBottom >= docViewTop) && (elemBottom <= docViewBottom);
-}
-//setup for skill bar levels
+
 var HTML     = Math.floor(getRandomInt(20, 25));
 var CSS      = Math.floor(getRandomInt(20, 35));
 var VUE      = Math.floor(getRandomInt(20, 15));
@@ -167,20 +165,17 @@ for (let key of Object.keys(codeData)) {
   document.getElementById(key).innerHTML = codeValue + '%';
 
   $(window).scroll(function () {
-    var image1 = `url('https://apod.nasa.gov/apod/image/1902/RedSprites_Broady_960.jpg')`;
-    var image2 = `url('https://agmicom.com/folio/img/team1.jpg')`;
-    var image3 = `url('https://agmicom.com/folio/img/mac.jpg')`;
+    function elementScrolled(elem) {
+      var docViewTop    = $(window).scrollTop();
+      var docViewBottom = docViewTop + $(window).height();
+      var elemTop       = $(elem).offset().top;
+      return ((elemTop <= docViewBottom) && (elemTop >= docViewTop))
+    }
 
-    elementScrolled('#skills1') ? $('#' + key).animate({width: codeValue + '%'}, 1000) : '';
-
-    if (elementScrolled('#about')) {
-      $(".image-wrapper").css("background-image", image2);
-    } else if (elementScrolled('#cta')) {
-      $(".image-wrapper").css("background-image", image3);
-    } else if (elementScrolled('#header')) {
-      $(".image-wrapper").css("background-image", image1);
-    } else {
-      $(".image-wrapper").css("background-image", image1);
+    if (elementScrolled('.skills1')) {
+      $(document).ready(function () {
+        $('#' + key).animate({width: codeValue + '%'}, 1000)
+      })
     }
   })
 }
@@ -193,18 +188,17 @@ function addDays(date, daysToAdd) {
   var _24HoursInMilliseconds = 86400000;
   return new Date(date.getTime() + daysToAdd * _24HoursInMilliseconds)
 }
-
-function daysInMonth(month, year) {
+function daysInMonth(month,year) {
   return new Date(year, month, 0).getDate();
 }
 
-var d                = new Date();
-var month            = 0;
-var currHour         = d.getHours();
-var currMonth        = month - 10;
-var currDay          = d.getDay();
-var currDate         = d.getDate();
-var currYear         = d.getFullYear();
+var d          = new Date();
+var month      = 0;
+var currHour   = d.getHours();
+var currMonth  = month - 10;
+var currDay    = d.getDay();
+var currDate   = d.getDate();
+var currYear = d.getFullYear();
 var lastDayThisMonth = daysInMonth(currMonth, currYear);
 
 var monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -269,7 +263,7 @@ $('.tips').hover(function () {
 
 //pie chart
 
-var config = {
+var config    = {
   type: 'pie',
   data: {
     datasets: [{
@@ -361,14 +355,9 @@ window.onload = function () {
   window.myPie = new Chart(ctx, config);
 };
 
-//device/browser detect
-var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-if (isMobile) {
-  $('body').addClass('is-mobile')
-}
-
 // apod background image for masthead
-var url    = "https://api.nasa.gov/planetary/apod?api_key=AMz8lkRfduSiN1E4csXepee4xIptaPmASqDBFjEh";
+var url = "https://api.nasa.gov/planetary/apod?api_key=AMz8lkRfduSiN1E4csXepee4xIptaPmASqDBFjEh";
+
 $.ajax({
   url: url,
   success: function (result) {
@@ -376,7 +365,6 @@ $.ajax({
     if (result.media_type === "video") {
       result.url = "https://apod.nasa.gov/apod/image/1902/RedSprites_Broady_960.jpg";
     }
-    $("header.masthead .image-wrapper").css("background-image", `url('` + result.url + `');`);
+    $("header.masthead").css("background-image", 'url(' + result.url + ')');
   }
 });
-

@@ -3,7 +3,6 @@ body,
 html {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
 }
 
 body {
@@ -51,8 +50,6 @@ h6 {
 
 section {
   padding: 8rem 0;
-  background-color: white;
-  width: 100vw;
 }
 
 .section-heading {
@@ -79,13 +76,4 @@ img::selection {
 img::-moz-selection {
   color: $white;
   background: transparent;
-}
-.image-wrapper{
-  position: fixed;
-  background-position: center center;
-  background-size: cover;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -9;
 }
