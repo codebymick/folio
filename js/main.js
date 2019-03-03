@@ -228,7 +228,7 @@ for (var i = lastDayThisMonth; i < display_to_today; i += 1) {
   var holidays   = ['21 Dec', '22 Dec', '23 Dec', '24 Dec', '25 Dec', '26 Dec', '27 Dec', '28 Dec', '29 Dec', '30 Dec', '31 Dec', '1 Jan', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul', '9 Jul', '10 Jul', '11 Jul', '12 Jul', '13 Jul', '14 Jul', '15 Jul', '16 Jul', '17 Jul', '18 Jul', '19 Jul', '3 Oct', '4 Oct', '5 Oct', '6 Oct', '7 Oct', '8 Oct', '9 Oct', '10 Oct', '11 Oct', '12 Oct'];
   var textInsert = `<span class="bubble-arrow">` + ` ${level} ` + popupText + contrDate + `</span></li>`;
 
-  if (holidays.indexOf(shortDate) > -1 || contrDay === 0) {//sundays and holidays
+  if (holidays.indexOf(shortDate) > -1 ) {//sundays and holidays
     level = 0;
     squares.insertAdjacentHTML('beforeend', `<li class="tips"><span class="bubble-arrow">0 ` + popupText + contrDate + `</span></li>`);
     if (i < 84) {
